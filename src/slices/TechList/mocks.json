@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "teach",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"tech_color",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "#115aeb",
+							"type": "Color"
+						}
+					],
+					[
+						"tech_name",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "leather",
+							"type": "Text"
+						}
+					]
+				]
+			}
+		]
+	}
+]

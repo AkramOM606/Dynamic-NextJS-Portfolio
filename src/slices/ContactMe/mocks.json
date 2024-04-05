@@ -1,0 +1,35 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "depend",
+				"type": "Text"
+			},
+			"sub_heading": {
+				"__TYPE__": "FieldContent",
+				"value": "military",
+				"type": "Text"
+			},
+			"contact_field": {
+				"__TYPE__": "FieldContent",
+				"value": "noted",
+				"type": "Text"
+			},
+			"contact_field_entry": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nisi do amet non irure eu pariatur minim consectetur deserunt et ea cupidatat sunt eu. Nulla deserunt est ex voluptate ut aute cupidatat non excepteur. Pariatur sunt tempor nisi id commodo cillum anim adipisicing minim minim culpa velit reprehenderit duis ea."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
