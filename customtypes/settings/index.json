@@ -24,13 +24,20 @@
               "config": {
                 "label": "Link",
                 "placeholder": "",
-                "select": "media"
+                "select": null
               }
             },
             "label": {
               "type": "Text",
               "config": {
                 "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "linksp": {
+              "type": "Text",
+              "config": {
+                "label": "LinkSP",
                 "placeholder": ""
               }
             }

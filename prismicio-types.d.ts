@@ -278,12 +278,12 @@ export interface SettingsDocumentDataNavItemItem {
   /**
    * Link field in *Settings → Nav Item*
    *
-   * - **Field Type**: Link to Media
+   * - **Field Type**: Link
    * - **Placeholder**: *None*
    * - **API ID Path**: settings.nav_item[].link
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  link: prismic.LinkToMediaField;
+  link: prismic.LinkField;
 
   /**
    * Label field in *Settings → Nav Item*
@@ -294,6 +294,16 @@ export interface SettingsDocumentDataNavItemItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
+  /**
+   * LinkSP field in *Settings → Nav Item*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.nav_item[].linksp
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  linksp: prismic.KeyTextField;
 }
 
 /**

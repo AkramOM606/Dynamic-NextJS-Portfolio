@@ -1,9 +1,9 @@
 "use client";
 
 import clsx from "clsx";
+import { MdArrowOutward } from "react-icons/md";
 import React, { useState } from "react";
 import { Content, KeyTextField, asLink } from "@prismicio/client";
-import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import { MdMenu, MdClose } from "react-icons/md";
 import Button from "./Button";
@@ -45,20 +45,14 @@ export default function NavBar({
           >
             <MdClose />
           </button>
-          {settings.data.nav_item.map(({ link, label }, index) => (
+          {settings.data.nav_item.map(({ link, label, linksp }, index) => (
             <React.Fragment key={label}>
               <li className="first:mt-8">
-                <PrismicNextLink
+                <Link
+                  href={clsx("/", linksp).replace(/\s/g, "")}
                   className={clsx(
                     "group relative block overflow-hidden rounded px-3 text-3xl font-bold text-slate-900 "
                   )}
-                  field={link}
-                  onClick={() => setOpen(false)}
-                  aria-current={
-                    pathname.includes(asLink(link) as string)
-                      ? "page"
-                      : undefined
-                  }
                 >
                   <span
                     className={clsx(
@@ -69,7 +63,7 @@ export default function NavBar({
                     )}
                   />
                   <span className="relative">{label}</span>
-                </PrismicNextLink>
+                </Link>
               </li>
               {index < settings.data.nav_item.length - 1 && (
                 <span
@@ -82,11 +76,22 @@ export default function NavBar({
             </React.Fragment>
           ))}
           <li>
-            <Button
-              linkField={settings.data.cta_link}
-              label={settings.data.cta_label}
-              className="ml-3"
-            />
+            <Link
+              href="#contact"
+              className={clsx(
+                "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
+              )}
+            >
+              <span
+                className={clsx(
+                  "absolute inset-0 z-0 h-full translate-y-9 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
+                )}
+              />
+              <span className="relative flex items-center justify-center gap-2">
+                {settings.data.cta_label}
+                {true && <MdArrowOutward className="inline-block" />}
+              </span>
+            </Link>
           </li>
         </div>
         <DesktopMenu settings={settings} pathname={pathname} />
@@ -99,7 +104,7 @@ function NameLogo({ name }: { name: KeyTextField }) {
   return (
     <Link
       href="/"
-      aria-label="Home page"
+      aria-label="Home Page"
       className="text-2xl font-extrabold tracking-tighter text-slate-900"
     >
       {name}
@@ -116,17 +121,14 @@ function DesktopMenu({
 }) {
   return (
     <div className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
-      {settings.data.nav_item.map(({ link, label }, index) => (
+      {settings.data.nav_item.map(({ link, label, linksp }, index) => (
         <React.Fragment key={label}>
           <li>
-            <PrismicNextLink
+            <Link
+              href={clsx("/", linksp).replace(/\s/g, "")}
               className={clsx(
                 "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
               )}
-              field={link}
-              aria-current={
-                pathname.includes(asLink(link) as string) ? "page" : undefined
-              }
             >
               <span
                 className={clsx(
@@ -137,7 +139,7 @@ function DesktopMenu({
                 )}
               />
               <span className="relative">{label}</span>
-            </PrismicNextLink>
+            </Link>
           </li>
           {index < settings.data.nav_item.length - 1 && (
             <span
@@ -150,11 +152,22 @@ function DesktopMenu({
         </React.Fragment>
       ))}
       <li>
-        <Button
-          linkField={settings.data.cta_link}
-          label={settings.data.cta_label}
-          className="ml-3"
-        />
+        <Link
+          href="#contact"
+          className={clsx(
+            "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
+          )}
+        >
+          <span
+            className={clsx(
+              "absolute inset-0 z-0 h-full translate-y-9 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
+            )}
+          />
+          <span className="relative flex items-center justify-center gap-2">
+            {settings.data.cta_label}
+            {true && <MdArrowOutward className="inline-block" />}
+          </span>
+        </Link>
       </li>
     </div>
   );
