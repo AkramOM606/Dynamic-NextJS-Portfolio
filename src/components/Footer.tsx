@@ -1,25 +1,48 @@
+"use client";
+
 import clsx from "clsx";
 import React from "react";
 import { createClient } from "@/prismicio";
 import { PrismicNextLink } from "@prismicio/next";
+import { Link as ScrollLink } from "react-scroll";
 import Link from "next/link";
 import Bounded from "@/components/Bounded";
 import { isFilled } from "@prismicio/client";
+import { MdArrowOutward } from "react-icons/md";
 import { FaGithub, FaSquareXTwitter, FaLinkedin } from "react-icons/fa6";
+import { usePathname } from "next/navigation";
 
 export default async function Footer() {
+  const pathname = usePathname();
   const client = createClient();
   const settings = await client.getSingle("settings");
+
   return (
     <Bounded as="footer" className="text-slate-600">
       <div className="container mx-auto mt-20 flex flex-col items-center justify-between gap-6 py-8 sm:flex-row ">
         <div className="name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start">
-          <Link
-            href="/"
-            className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-yellow-400"
-          >
-            {settings.data.name}
-          </Link>
+          {pathname.startsWith("/blog") || pathname.startsWith("/projects") ? (
+            <Link
+              href={`/`}
+              className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-red-400"
+            >
+              {settings.data.name}
+            </Link>
+          ) : (
+            <ScrollLink
+              to="hero"
+              spy={true}
+              smooth={true}
+              offset={-50}
+              delay={0}
+              duration={200}
+              aria-label="Home Page"
+              className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-red-400"
+            >
+              {settings.data.name}
+            </ScrollLink>
+          )}
+
           <span
             className="hidden text-5xl font-extralight leading-[0] text-slate-400 sm:inline"
             aria-hidden={true}
@@ -35,14 +58,32 @@ export default async function Footer() {
             {settings.data.nav_item.map(({ link, label, linksp }, index) => (
               <React.Fragment key={label}>
                 <li>
-                  <Link
-                    href={clsx("/", linksp).replace(/\s/g, "")}
-                    className={clsx(
-                      "group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-yellow-400"
-                    )}
-                  >
-                    {label}
-                  </Link>
+                  {pathname.startsWith("/blog") ||
+                  pathname.startsWith("/projects") ? (
+                    <Link
+                      href={`/#${linksp}`}
+                      className={clsx(
+                        "group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400"
+                      )}
+                    >
+                      {label}
+                    </Link>
+                  ) : (
+                    <ScrollLink
+                      to={linksp as string}
+                      spy={true}
+                      smooth={true}
+                      offset={-50}
+                      delay={0}
+                      duration={200}
+                      activeClass="active"
+                      className={clsx(
+                        "group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400"
+                      )}
+                    >
+                      {label}
+                    </ScrollLink>
+                  )}
                 </li>
                 {index < settings.data.nav_item.length - 1 && (
                   <span
@@ -60,7 +101,7 @@ export default async function Footer() {
           {isFilled.link(settings.data.github_link) && (
             <PrismicNextLink
               field={settings.data.github_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
+              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-red-400"
               aria-label={settings.data.name + " on GitHub"}
             >
               <FaGithub />
@@ -69,7 +110,7 @@ export default async function Footer() {
           {isFilled.link(settings.data.x_link) && (
             <PrismicNextLink
               field={settings.data.x_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
+              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-red-400"
               aria-label={settings.data.name + " on X"}
             >
               <FaSquareXTwitter />
@@ -78,7 +119,7 @@ export default async function Footer() {
           {isFilled.link(settings.data.linkedin_link) && (
             <PrismicNextLink
               field={settings.data.linkedin_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
+              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-red-400"
               aria-label={settings.data.name + " on LinkedIn"}
             >
               <FaLinkedin />
