@@ -24,7 +24,7 @@ export default function NavBar({
     <nav aria-label="Main navigation">
       <ul className="flex flex-col justify-between bg-slate-50 px-4 py-2  md:flex-row md:items-center">
         <div className="flex items-center justify-between">
-          <NameLogo name={settings.data.name} />
+          <NameLogo name={settings.data.name} pathname={pathname} />
           <button
             aria-expanded={open}
             aria-label="Open menu"
@@ -51,22 +51,46 @@ export default function NavBar({
           {settings.data.nav_item.map(({ link, label, linksp }, index) => (
             <React.Fragment key={label}>
               <li className="first:mt-8">
-                <ScrollLink
-                  to={clsx("/", linksp).replace(/\s/g, "")}
-                  className={clsx(
-                    "group relative block overflow-hidden rounded px-3 text-3xl font-bold text-slate-900 "
-                  )}
-                >
-                  <span
+                {pathname.startsWith("/blog") ||
+                pathname.startsWith("/projects") ? (
+                  <Link
+                    href={`/#${linksp}`}
                     className={clsx(
-                      "absolute inset-0 z-0 h-full translate-y-12 rounded bg-red-500 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
-                      pathname.includes(asLink(link) as string)
-                        ? "translate-y-6"
-                        : "translate-y-18"
+                      "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
                     )}
-                  />
-                  <span className="relative">{label}</span>
-                </ScrollLink>
+                  >
+                    <span
+                      className={clsx(
+                        "absolute inset-0 z-0 h-full rounded bg-red-500 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
+                        pathname.includes(asLink(link) as string)
+                          ? "translate-y-6"
+                          : "translate-y-8"
+                      )}
+                    />
+                    <span className="relative">{label}</span>
+                  </Link>
+                ) : (
+                  <ScrollLink
+                    to={linksp as string}
+                    spy={true}
+                    smooth={true}
+                    offset={-50}
+                    delay={0}
+                    duration={200}
+                    activeClass="active"
+                    className={clsx(
+                      "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
+                    )}
+                  >
+                    <span
+                      className={clsx(
+                        "absolute inset-0 z-0 h-full rounded bg-red-500 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
+                        "translate-y-8"
+                      )}
+                    />
+                    <span className="relative">{label}</span>
+                  </ScrollLink>
+                )}
               </li>
               {index < settings.data.nav_item.length - 1 && (
                 <span
@@ -79,22 +103,48 @@ export default function NavBar({
             </React.Fragment>
           ))}
           <li>
-            <ScrollLink
-              to="contact"
-              className={clsx(
-                "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
-              )}
-            >
-              <span
+            {pathname.startsWith("/blog") ||
+            pathname.startsWith("/projects") ? (
+              <Link
+                href={`/#${"contact"}`}
                 className={clsx(
-                  "absolute inset-0 z-0 h-full translate-y-9 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
+                  "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
                 )}
-              />
-              <span className="relative flex items-center justify-center gap-2">
-                {settings.data.cta_label}
-                {true && <MdArrowOutward className="inline-block" />}
-              </span>
-            </ScrollLink>
+              >
+                <span
+                  className={clsx(
+                    "absolute inset-0 z-0 h-full translate-y-10 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
+                  )}
+                />
+                <span className="relative flex items-center justify-center gap-2">
+                  {settings.data.cta_label}
+                  {true && <MdArrowOutward className="inline-block" />}
+                </span>
+              </Link>
+            ) : (
+              <ScrollLink
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={75}
+                delay={0}
+                duration={200}
+                activeClass="activeCTA"
+                className={clsx(
+                  "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
+                )}
+              >
+                <span
+                  className={clsx(
+                    "absolute inset-0 z-0 h-full translate-y-10 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
+                  )}
+                />
+                <span className="relative flex items-center justify-center gap-2">
+                  {settings.data.cta_label}
+                  {true && <MdArrowOutward className="inline-block" />}
+                </span>
+              </ScrollLink>
+            )}
           </li>
         </div>
         <DesktopMenu settings={settings} pathname={pathname} />
@@ -103,15 +153,38 @@ export default function NavBar({
   );
 }
 
-function NameLogo({ name }: { name: KeyTextField }) {
+function NameLogo({
+  name,
+  pathname,
+}: {
+  name: KeyTextField;
+  pathname: string;
+}) {
   return (
-    <ScrollLink
-      to="/"
-      aria-label="Home Page"
-      className="text-2xl font-extrabold tracking-tighter text-slate-900"
-    >
-      {name}
-    </ScrollLink>
+    <>
+      {pathname.startsWith("/blog") || pathname.startsWith("/projects") ? (
+        <Link
+          href={`/`}
+          aria-label="Home Page"
+          className="text-2xl font-extrabold tracking-tighter text-slate-900"
+        >
+          {name}
+        </Link>
+      ) : (
+        <ScrollLink
+          to="hero"
+          spy={true}
+          smooth={true}
+          offset={-50}
+          delay={0}
+          duration={200}
+          aria-label="Home Page"
+          className="text-2xl font-extrabold tracking-tighter text-slate-900"
+        >
+          {name}
+        </ScrollLink>
+      )}
+    </>
   );
 }
 
@@ -179,28 +252,47 @@ function DesktopMenu({
         </React.Fragment>
       ))}
       <li>
-        <ScrollLink
-          to="contact"
-          spy={true}
-          smooth={true}
-          offset={75}
-          delay={0}
-          duration={200}
-          activeClass="active"
-          className={clsx(
-            "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
-          )}
-        >
-          <span
+        {pathname.startsWith("/blog") || pathname.startsWith("/projects") ? (
+          <Link
+            href={`/#${"contact"}`}
             className={clsx(
-              "absolute inset-0 z-0 h-full translate-y-9 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
+              "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
             )}
-          />
-          <span className="relative flex items-center justify-center gap-2">
-            {settings.data.cta_label}
-            {true && <MdArrowOutward className="inline-block" />}
-          </span>
-        </ScrollLink>
+          >
+            <span
+              className={clsx(
+                "absolute inset-0 z-0 h-full translate-y-10 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
+              )}
+            />
+            <span className="relative flex items-center justify-center gap-2">
+              {settings.data.cta_label}
+              {true && <MdArrowOutward className="inline-block" />}
+            </span>
+          </Link>
+        ) : (
+          <ScrollLink
+            to="contact"
+            spy={true}
+            smooth={true}
+            offset={75}
+            delay={0}
+            duration={200}
+            activeClass="activeCTA"
+            className={clsx(
+              "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
+            )}
+          >
+            <span
+              className={clsx(
+                "absolute inset-0 z-0 h-full translate-y-10 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
+              )}
+            />
+            <span className="relative flex items-center justify-center gap-2">
+              {settings.data.cta_label}
+              {true && <MdArrowOutward className="inline-block" />}
+            </span>
+          </ScrollLink>
+        )}
       </li>
     </div>
   );

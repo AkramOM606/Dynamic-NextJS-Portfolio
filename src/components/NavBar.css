@@ -1,3 +1,7 @@
 .active span:first-child {
     transform: translateY(27px);
 }
+
+.activeCTA span:first-child {
+    transform: translateY(35px);
+}
