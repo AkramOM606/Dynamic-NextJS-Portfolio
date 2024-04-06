@@ -32,17 +32,17 @@ export default async function Footer() {
         </div>
         <nav className="navigation" aria-label="Footer Navigation">
           <ul className="flex items-center gap-1">
-            {settings.data.nav_item.map(({ link, label }, index) => (
+            {settings.data.nav_item.map(({ link, label, linksp }, index) => (
               <React.Fragment key={label}>
                 <li>
-                  <PrismicNextLink
+                  <Link
+                    href={clsx("/", linksp).replace(/\s/g, "")}
                     className={clsx(
                       "group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-yellow-400"
                     )}
-                    field={link}
                   >
                     {label}
-                  </PrismicNextLink>
+                  </Link>
                 </li>
                 {index < settings.data.nav_item.length - 1 && (
                   <span
