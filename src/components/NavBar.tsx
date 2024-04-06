@@ -8,6 +8,7 @@ import Link from "next/link";
 import { MdMenu, MdClose } from "react-icons/md";
 import Button from "./Button";
 import { usePathname } from "next/navigation";
+import path from "path";
 
 export default function NavBar({
   settings,
