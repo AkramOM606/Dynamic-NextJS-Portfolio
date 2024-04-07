@@ -56,7 +56,7 @@ export default function NavBar({
                   <Link
                     href={`/#${linksp}`}
                     className={clsx(
-                      "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
+                      "cursor-pointer group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
                     )}
                   >
                     <span
@@ -79,7 +79,7 @@ export default function NavBar({
                     duration={200}
                     activeClass="active"
                     className={clsx(
-                      "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
+                      "cursor-pointer group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
                     )}
                   >
                     <span
@@ -108,7 +108,7 @@ export default function NavBar({
               <Link
                 href={`/#${"contact"}`}
                 className={clsx(
-                  "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
+                  "cursor-pointer group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
                 )}
               >
                 <span
@@ -131,7 +131,7 @@ export default function NavBar({
                 duration={200}
                 activeClass="activeCTA"
                 className={clsx(
-                  "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
+                  "cursor-pointer group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
                 )}
               >
                 <span
@@ -166,7 +166,7 @@ function NameLogo({
         <Link
           href={`/`}
           aria-label="Home Page"
-          className="text-2xl font-extrabold tracking-tighter text-slate-900"
+          className="cursor-pointer text-2xl font-extrabold tracking-tighter text-slate-900"
         >
           {name}
         </Link>
@@ -179,7 +179,7 @@ function NameLogo({
           delay={0}
           duration={200}
           aria-label="Home Page"
-          className="text-2xl font-extrabold tracking-tighter text-slate-900"
+          className="cursor-pointer text-2xl font-extrabold tracking-tighter text-slate-900"
         >
           {name}
         </ScrollLink>
@@ -205,7 +205,7 @@ function DesktopMenu({
               <Link
                 href={`/#${linksp}`}
                 className={clsx(
-                  "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
+                  "cursor-pointer group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
                 )}
               >
                 <span
@@ -228,7 +228,7 @@ function DesktopMenu({
                 duration={200}
                 activeClass="active"
                 className={clsx(
-                  "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
+                  "cursor-pointer group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
                 )}
               >
                 <span
@@ -256,7 +256,7 @@ function DesktopMenu({
           <Link
             href={`/#${"contact"}`}
             className={clsx(
-              "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
+              "cursor-pointer group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
             )}
           >
             <span
@@ -279,7 +279,7 @@ function DesktopMenu({
             duration={200}
             activeClass="activeCTA"
             className={clsx(
-              "group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
+              "cursor-pointer group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
             )}
           >
             <span

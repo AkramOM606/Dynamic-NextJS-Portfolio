@@ -24,7 +24,7 @@ export default async function Footer() {
           {pathname.startsWith("/blog") || pathname.startsWith("/projects") ? (
             <Link
               href={`/`}
-              className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-red-400"
+              className="cursor-pointer text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-red-400"
             >
               {settings.data.name}
             </Link>
@@ -37,7 +37,7 @@ export default async function Footer() {
               delay={0}
               duration={200}
               aria-label="Home Page"
-              className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-red-400"
+              className="cursor-pointer text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-red-400"
             >
               {settings.data.name}
             </ScrollLink>
@@ -63,7 +63,7 @@ export default async function Footer() {
                     <Link
                       href={`/#${linksp}`}
                       className={clsx(
-                        "group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400"
+                        "cursor-pointer group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400"
                       )}
                     >
                       {label}
@@ -78,7 +78,7 @@ export default async function Footer() {
                       duration={200}
                       activeClass="active"
                       className={clsx(
-                        "group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400"
+                        "cursor-pointer group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400"
                       )}
                     >
                       {label}
@@ -101,7 +101,7 @@ export default async function Footer() {
           {isFilled.link(settings.data.github_link) && (
             <PrismicNextLink
               field={settings.data.github_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-red-400"
+              className="cursor-pointer p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-red-400"
               aria-label={settings.data.name + " on GitHub"}
             >
               <FaGithub />
@@ -110,7 +110,7 @@ export default async function Footer() {
           {isFilled.link(settings.data.x_link) && (
             <PrismicNextLink
               field={settings.data.x_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-red-400"
+              className="cursor-pointer p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-red-400"
               aria-label={settings.data.name + " on X"}
             >
               <FaSquareXTwitter />
@@ -119,7 +119,7 @@ export default async function Footer() {
           {isFilled.link(settings.data.linkedin_link) && (
             <PrismicNextLink
               field={settings.data.linkedin_link}
-              className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-red-400"
+              className="cursor-pointer p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-red-400"
               aria-label={settings.data.name + " on LinkedIn"}
             >
               <FaLinkedin />
