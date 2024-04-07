@@ -11,11 +11,17 @@ import { isFilled } from "@prismicio/client";
 import { MdArrowOutward } from "react-icons/md";
 import { FaGithub, FaSquareXTwitter, FaLinkedin } from "react-icons/fa6";
 import { usePathname } from "next/navigation";
+import SettingsFetcher from "./ParentFooter";
+import { SettingsDocument } from "../../prismicio-types";
 
-export default async function Footer() {
+type FooterProps = {
+  settings: SettingsDocument<string>; // Replace 'any' with the type of your settings
+};
+
+export default async function Footer({ settings }: FooterProps) {
   const pathname = usePathname();
   const client = createClient();
-  const settings = await client.getSingle("settings");
+  // const settings = await client.getSingle("settings");
 
   return (
     <Bounded as="footer" className="text-slate-600">
