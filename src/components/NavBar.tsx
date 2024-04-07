@@ -222,6 +222,7 @@ function DesktopMenu({
               <ScrollLink
                 to={linksp as string}
                 spy={true}
+                hashSpy={true}
                 smooth={true}
                 offset={-50}
                 delay={0}
