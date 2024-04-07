@@ -60,7 +60,7 @@ export default async function Footer({ settings }: FooterProps) {
           </p>
         </div>
         <nav className="navigation" aria-label="Footer Navigation">
-          <ul className="flex items-center gap-1">
+          <ul className="flex flex-col items-center gap-1 sm:flex-row">
             {settings.data.nav_item.map(({ link, label, linksp }, index) => (
               <React.Fragment key={label}>
                 <li>
@@ -82,7 +82,6 @@ export default async function Footer({ settings }: FooterProps) {
                       offset={-50}
                       delay={0}
                       duration={200}
-                      activeClass="active"
                       className={clsx(
                         "cursor-pointer group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400"
                       )}
@@ -93,7 +92,7 @@ export default async function Footer({ settings }: FooterProps) {
                 </li>
                 {index < settings.data.nav_item.length - 1 && (
                   <span
-                    className="text-4xl font-thin leading-[0] text-slate-400"
+                    className="text-4xl font-thin leading-[0] text-slate-400 hidden sm:block"
                     aria-hidden="true"
                   >
                     |

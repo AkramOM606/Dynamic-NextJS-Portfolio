@@ -86,7 +86,7 @@ const ContactMe = ({ slice }: ContactMeProps): JSX.Element => {
         data-slice-variation={slice.variation}
       >
         <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden">
-          <div className="p-8 rounded-2xl bg-slate-800">
+          <div className="p-8 rounded-2xl bg-slate-800 max-lg self-center lg:max-w-full">
             <div>
               <Heading size="sm">{slice.primary.sub_heading}</Heading>
             </div>
