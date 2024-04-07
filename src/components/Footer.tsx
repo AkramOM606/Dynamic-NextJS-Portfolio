@@ -18,7 +18,7 @@ type FooterProps = {
   settings: SettingsDocument<string>; // Replace 'any' with the type of your settings
 };
 
-export default async function Footer({ settings }: FooterProps) {
+export default function Footer({ settings }: FooterProps) {
   const pathname = usePathname();
   const client = createClient();
   // const settings = await client.getSingle("settings");
