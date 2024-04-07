@@ -73,6 +73,7 @@ export default function NavBar({
                   <ScrollLink
                     to={linksp as string}
                     spy={true}
+                    hashSpy={true}
                     smooth={true}
                     offset={-50}
                     delay={0}
@@ -125,6 +126,7 @@ export default function NavBar({
               <ScrollLink
                 to="contact"
                 spy={true}
+                hashSpy={true}
                 smooth={true}
                 offset={75}
                 delay={0}
@@ -174,6 +176,7 @@ function NameLogo({
         <ScrollLink
           to="hero"
           spy={true}
+          hashSpy={true}
           smooth={true}
           offset={-50}
           delay={0}
@@ -196,105 +199,108 @@ function DesktopMenu({
   pathname: string;
 }) {
   return (
-    <div className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
-      {settings.data.nav_item.map(({ link, label, linksp }, index) => (
-        <React.Fragment key={label}>
-          <li>
-            {pathname.startsWith("/blog") ||
-            pathname.startsWith("/projects") ? (
-              <Link
-                href={`/#${linksp}`}
-                className={clsx(
-                  "cursor-pointer group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
-                )}
-              >
-                <span
+    <>
+      <div className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
+        {settings.data.nav_item.map(({ link, label, linksp }, index) => (
+          <React.Fragment key={label}>
+            <li>
+              {pathname.startsWith("/blog") ||
+              pathname.startsWith("/projects") ? (
+                <Link
+                  href={`/#${linksp}`}
                   className={clsx(
-                    "absolute inset-0 z-0 h-full rounded bg-red-500 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
-                    pathname.includes(asLink(link) as string)
-                      ? "translate-y-6"
-                      : "translate-y-8"
+                    "cursor-pointer group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
                   )}
-                />
-                <span className="relative">{label}</span>
-              </Link>
-            ) : (
-              <ScrollLink
-                to={linksp as string}
-                spy={true}
-                hashSpy={true}
-                smooth={true}
-                offset={-50}
-                delay={0}
-                duration={200}
-                activeClass="active"
-                className={clsx(
-                  "cursor-pointer group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
-                )}
-              >
-                <span
+                >
+                  <span
+                    className={clsx(
+                      "absolute inset-0 z-0 h-full rounded bg-red-500 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
+                      pathname.includes(asLink(link) as string)
+                        ? "translate-y-6"
+                        : "translate-y-8"
+                    )}
+                  />
+                  <span className="relative">{label}</span>
+                </Link>
+              ) : (
+                <ScrollLink
+                  to={linksp as string}
+                  spy={true}
+                  hashSpy={true}
+                  smooth={true}
+                  offset={-50}
+                  delay={0}
+                  duration={200}
+                  activeClass="active"
                   className={clsx(
-                    "absolute inset-0 z-0 h-full rounded bg-red-500 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
-                    "translate-y-8"
+                    "cursor-pointer group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900"
                   )}
-                />
-                <span className="relative">{label}</span>
-              </ScrollLink>
+                >
+                  <span
+                    className={clsx(
+                      "absolute inset-0 z-0 h-full rounded bg-red-500 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
+                      "translate-y-8"
+                    )}
+                  />
+                  <span className="relative">{label}</span>
+                </ScrollLink>
+              )}
+            </li>
+            {index < settings.data.nav_item.length - 1 && (
+              <span
+                className="hidden text-4xl font-thin leading-[0] text-slate-400 md:inline"
+                aria-hidden="true"
+              >
+                |
+              </span>
             )}
-          </li>
-          {index < settings.data.nav_item.length - 1 && (
-            <span
-              className="hidden text-4xl font-thin leading-[0] text-slate-400 md:inline"
-              aria-hidden="true"
+          </React.Fragment>
+        ))}
+        <li>
+          {pathname.startsWith("/blog") || pathname.startsWith("/projects") ? (
+            <Link
+              href={`/#${"contact"}`}
+              className={clsx(
+                "cursor-pointer group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
+              )}
             >
-              |
-            </span>
+              <span
+                className={clsx(
+                  "absolute inset-0 z-0 h-full translate-y-10 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
+                )}
+              />
+              <span className="relative flex items-center justify-center gap-2">
+                {settings.data.cta_label}
+                {true && <MdArrowOutward className="inline-block" />}
+              </span>
+            </Link>
+          ) : (
+            <ScrollLink
+              to="contact"
+              spy={true}
+              smooth={true}
+              hashSpy={true}
+              offset={75}
+              delay={0}
+              duration={200}
+              activeClass="activeCTA"
+              className={clsx(
+                "cursor-pointer group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
+              )}
+            >
+              <span
+                className={clsx(
+                  "absolute inset-0 z-0 h-full translate-y-10 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
+                )}
+              />
+              <span className="relative flex items-center justify-center gap-2">
+                {settings.data.cta_label}
+                {true && <MdArrowOutward className="inline-block" />}
+              </span>
+            </ScrollLink>
           )}
-        </React.Fragment>
-      ))}
-      <li>
-        {pathname.startsWith("/blog") || pathname.startsWith("/projects") ? (
-          <Link
-            href={`/#${"contact"}`}
-            className={clsx(
-              "cursor-pointer group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
-            )}
-          >
-            <span
-              className={clsx(
-                "absolute inset-0 z-0 h-full translate-y-10 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
-              )}
-            />
-            <span className="relative flex items-center justify-center gap-2">
-              {settings.data.cta_label}
-              {true && <MdArrowOutward className="inline-block" />}
-            </span>
-          </Link>
-        ) : (
-          <ScrollLink
-            to="contact"
-            spy={true}
-            smooth={true}
-            offset={75}
-            delay={0}
-            duration={200}
-            activeClass="activeCTA"
-            className={clsx(
-              "cursor-pointer group relative flex w-fit items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-500  px-4 py-2 font-bold transition-transform ease-out  hover:scale-105 ml-3"
-            )}
-          >
-            <span
-              className={clsx(
-                "absolute inset-0 z-0 h-full translate-y-10 bg-red-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0"
-              )}
-            />
-            <span className="relative flex items-center justify-center gap-2">
-              {settings.data.cta_label}
-              {true && <MdArrowOutward className="inline-block" />}
-            </span>
-          </ScrollLink>
-        )}
-      </li>
-    </div>
+        </li>
+      </div>
+    </>
   );
 }
