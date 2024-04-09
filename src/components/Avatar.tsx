@@ -30,7 +30,7 @@ export default function Avatar({
           opacity: 1,
           duration: prefersReducedMotion ? 0 : 1.3,
           ease: "power3.inOut",
-        }
+        },
       );
 
       window.onmousemove = (e) => {
@@ -56,7 +56,7 @@ export default function Avatar({
               rotation: gsap.utils.clamp(-2, 2, 5 * componentPercent.x),
               duration: 0.5,
             },
-            0
+            0,
           )
           .to(
             ".highlight",
@@ -65,7 +65,7 @@ export default function Avatar({
               x: -10 + 20 * componentPercent.x,
               duration: 0.5,
             },
-            0
+            0,
           );
       };
     }, component);

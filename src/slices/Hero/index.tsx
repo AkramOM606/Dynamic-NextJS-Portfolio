@@ -41,7 +41,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             each: 0.1,
             from: "random",
           },
-        }
+        },
       );
       tl.fromTo(
         ".job-title",
@@ -56,7 +56,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           duration: 1,
           scale: 1,
           ease: "elastic.out(1,0.3)",
-        }
+        },
       );
     }, component);
     return () => ctx.revert();
@@ -81,7 +81,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       ref={component}
     >
       <div
-        className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center"
+        className="grid min-h-[70vh] grid-cols-1 items-center md:grid-cols-2"
         id="hero"
       >
         <Shapes />

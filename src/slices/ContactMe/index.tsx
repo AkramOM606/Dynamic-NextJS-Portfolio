@@ -58,7 +58,7 @@ const ContactMe = ({ slice }: ContactMeProps): JSX.Element => {
           to_email: "v.sunior@gmail.com",
           message: form.message,
         },
-        "Bkak_yyg3_o7dw3Hi"
+        "Bkak_yyg3_o7dw3Hi",
       )
       .then(
         () => {
@@ -75,18 +75,18 @@ const ContactMe = ({ slice }: ContactMeProps): JSX.Element => {
           setLoading(false);
           console.error(error);
           toast.error("Something went wrong. Please try again.");
-        }
+        },
       );
   };
 
   return (
-    <div id="contact" className="flex-[0.75] bg-black-100 p-8 rounded-2xl">
+    <div id="contact" className="bg-black-100 flex-[0.75] rounded-2xl p-8">
       <Bounded
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
       >
-        <div className="xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden">
-          <div className="p-8 rounded-2xl bg-slate-800 max-lg self-center lg:max-w-full">
+        <div className="flex flex-col-reverse gap-10 overflow-hidden xl:mt-12 xl:flex-row">
+          <div className="max-lg self-center rounded-2xl bg-slate-800 p-8 lg:max-w-full">
             <div>
               <Heading size="sm">{slice.primary.sub_heading}</Heading>
             </div>
@@ -100,29 +100,29 @@ const ContactMe = ({ slice }: ContactMeProps): JSX.Element => {
               onSubmit={handleSubmit}
             >
               <label className="flex flex-col">
-                <span className="text-white font-medium mb-4">Your Name</span>
+                <span className="mb-4 font-medium text-white">Your Name</span>
                 <input
                   type="text"
                   name="name"
                   value={form.name}
                   onChange={handleChange}
                   placeholder="What is your name?"
-                  className="bg-tertiary py-4 px-6 placeholder:text-secondary text-black rounded-lg outline-none border-none font-medium"
+                  className="bg-tertiary placeholder:text-secondary rounded-lg border-none px-6 py-4 font-medium text-black outline-none"
                 />
               </label>
               <label className="flex flex-col">
-                <span className="text-white font-medium mb-4">Your Email</span>
+                <span className="mb-4 font-medium text-white">Your Email</span>
                 <input
                   type="text"
                   name="email"
                   value={form.email}
                   onChange={handleChange}
                   placeholder="What is your email?"
-                  className="bg-tertiary py-4 px-6 placeholder:text-secondary text-black rounded-lg outline-none border-none font-medium"
+                  className="bg-tertiary placeholder:text-secondary rounded-lg border-none px-6 py-4 font-medium text-black outline-none"
                 />
               </label>
               <label className="flex flex-col">
-                <span className="text-white font-medium mb-4">
+                <span className="mb-4 font-medium text-white">
                   {slice.primary.contact_field}
                 </span>
                 <textarea
@@ -131,12 +131,12 @@ const ContactMe = ({ slice }: ContactMeProps): JSX.Element => {
                   value={form.message}
                   onChange={handleChange}
                   placeholder={asText(slice.primary.contact_field_entry)}
-                  className="bg-tertiary py-4 px-6 placeholder:text-secondary text-black rounded-lg outline-none border-none font-medium"
+                  className="bg-tertiary placeholder:text-secondary rounded-lg border-none px-6 py-4 font-medium text-black outline-none"
                 />
               </label>
               <button
                 type="submit"
-                className="bg-slate-700 py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+                className="shadow-primary w-fit rounded-xl bg-slate-700 px-8 py-3 font-bold text-white shadow-md outline-none"
               >
                 {loading ? "Sending..." : "Send"}
               </button>
@@ -144,7 +144,7 @@ const ContactMe = ({ slice }: ContactMeProps): JSX.Element => {
             </form>
           </div>
 
-          <div className="xl:flex-1 xl:h-auto md:h-[450px] h-[350px]">
+          <div className="h-[350px] md:h-[450px] xl:h-auto xl:flex-1">
             <EarthCanvas />
           </div>
         </div>

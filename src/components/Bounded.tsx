@@ -18,7 +18,7 @@ const Bounded = React.forwardRef<HTMLDivElement, BoundedProps>(
         <div className="mx-auto w-full max-w-7xl">{children}</div>
       </Comp>
     );
-  }
+  },
 );
 
 Bounded.displayName = "Bounded";

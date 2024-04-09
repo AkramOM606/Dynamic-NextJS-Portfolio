@@ -69,7 +69,7 @@ export default function Footer({ settings }: FooterProps) {
                     <Link
                       href={`/#${linksp}`}
                       className={clsx(
-                        "cursor-pointer group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400"
+                        "group relative block cursor-pointer overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400",
                       )}
                     >
                       {label}
@@ -83,7 +83,7 @@ export default function Footer({ settings }: FooterProps) {
                       delay={0}
                       duration={200}
                       className={clsx(
-                        "cursor-pointer group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400"
+                        "group relative block cursor-pointer overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-red-400",
                       )}
                     >
                       {label}
@@ -92,7 +92,7 @@ export default function Footer({ settings }: FooterProps) {
                 </li>
                 {index < settings.data.nav_item.length - 1 && (
                   <span
-                    className="text-4xl font-thin leading-[0] text-slate-400 hidden sm:block"
+                    className="hidden text-4xl font-thin leading-[0] text-slate-400 sm:block"
                     aria-hidden="true"
                   >
                     |
