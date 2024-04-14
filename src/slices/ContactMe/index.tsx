@@ -49,16 +49,16 @@ const ContactMe = ({ slice }: ContactMeProps): JSX.Element => {
     }
     emailjs
       .send(
-        "service_miklwgl",
-        "template_t9ybp9o",
+        "SERVICE_ID",
+        "TEMPLATE_ID",
         {
           from_name: form.name,
-          to_name: "Akram TEST",
+          to_name: "YOUR_NAME",
           from_email: form.email,
-          to_email: "v.sunior@gmail.com",
+          to_email: "YOUR_EMAIL",
           message: form.message,
         },
-        "Bkak_yyg3_o7dw3Hi",
+        "PUBLIC_KEY",
       )
       .then(
         () => {
